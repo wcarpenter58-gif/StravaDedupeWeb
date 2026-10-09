@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT,strava_id INTEGER NOT NULL UNIQUE,display_name TEXT,access_token TEXT NOT NULL,refresh_token TEXT NOT NULL,scope TEXT,expires_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY,user_id INTEGER NOT NULL REFERENCES users(id),expires_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS sessions_expiry ON sessions(expires_at);
